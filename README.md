@@ -24,6 +24,8 @@ SELECT * FROM appointments;
 SELECT * FROM billing;
 SELECT * FROM doctors;
 SELECT * FROM prescriptions;
+
+
 📄 Appointment and Prescription Details for a Specific Patient
 sql
 Copy
@@ -31,6 +33,8 @@ Edit
 SELECT * FROM appointments WHERE patient_id = 1;
 SELECT * FROM prescriptions WHERE appointment_id = 1;
 SELECT * FROM billing WHERE appointment_id = 2;
+
+
 🧾 Appointment Billing Summary
 sql
 Copy
@@ -48,11 +52,15 @@ FROM appointments a
 JOIN patients p ON a.patient_id = p.patient_id
 JOIN doctors d ON a.doctor_id = d.doctor_id
 JOIN billing b ON a.appointment_id = b.appointment_id;
+
+
 ✅ Paid Billing Records
 sql
 Copy
 Edit
 SELECT * FROM billing WHERE status = "paid";
+
+
 💰 Total Billing and Paid Amount
 sql
 Copy
@@ -60,6 +68,8 @@ Edit
 SELECT 
   (SELECT SUM(amount) FROM billing) AS total_billed,
   (SELECT SUM(amount) FROM billing WHERE status = 'paid') AS total_paid;
+
+  
 🧑‍⚕️ Doctor Appointment Statistics by Specialty
 sql
 Copy
@@ -70,6 +80,8 @@ SELECT
 FROM appointments a
 JOIN doctors d ON a.doctor_id = d.doctor_id
 GROUP BY d.specialty;
+
+
 📊 Appointment Reasons Frequency
 sql
 Copy
@@ -78,6 +90,8 @@ SELECT reason, COUNT(*) AS count
 FROM appointments 
 GROUP BY reason 
 ORDER BY count DESC;
+
+
 📅 Latest Appointment per Patient
 sql
 Copy
@@ -90,6 +104,8 @@ SELECT
 FROM patients p
 JOIN appointments a ON p.patient_id = a.patient_id
 GROUP BY p.patient_id, p.first_name, p.last_name;
+
+
 👨‍⚕️ Doctor Appointment Count
 sql
 Copy
@@ -102,6 +118,8 @@ SELECT
 FROM doctors d
 LEFT JOIN appointments a ON d.doctor_id = a.doctor_id
 GROUP BY d.doctor_id, d.first_name, d.last_name;
+
+
 💊 Pending Prescription Details (Ordered by Dosage)
 sql
 Copy
@@ -116,6 +134,8 @@ JOIN appointments a ON pr.appointment_id = a.appointment_id
 JOIN billing b ON a.appointment_id = b.appointment_id
 WHERE b.status = 'pending'
 ORDER BY dosage DESC;
+
+
 📌 Objective
 The purpose of this project is to:
 
@@ -127,12 +147,14 @@ Generate business insights from raw tables
 
 Practice data handling using joins, grouping, aggregation, filtering, and subqueries
 
+
 🛠️ Technologies Used
 SQL
 
 MySQL / PostgreSQL (compatible syntax)
 
 DBMS tools like MySQL Workbench or pgAdmin
+
 
 📎 How to Use
 Clone this repository
@@ -141,12 +163,14 @@ Import the provided SQL schema into your local database
 
 Run the queries in your preferred SQL editor
 
+
 📈 Future Scope
 Data visualization with Power BI / Tableau
 
 Integration with a frontend for appointment booking
 
 Advanced analytics (e.g., churn prediction or prescription trends)
+
 
 📬 Feedback & Contributions
 Feel free to fork this project, suggest improvements, or raise issues. Contributions are always welcome!
