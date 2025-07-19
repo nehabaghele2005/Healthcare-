@@ -38,9 +38,6 @@ SELECT * FROM prescriptions;
 
 
 📄 Appointment and Prescription Details for a Specific Patient
-sql
-Copy
-Edit
 SELECT * FROM appointments WHERE patient_id = 1;
 SELECT * FROM prescriptions WHERE appointment_id = 1;
 SELECT * FROM billing WHERE appointment_id = 2;
@@ -50,9 +47,6 @@ SELECT * FROM billing WHERE appointment_id = 2;
 
 
 🧾 Appointment Billing Summary
-sql
-Copy
-Edit
 SELECT 
   a.appointment_id,
   p.first_name AS patient_first_name,
@@ -71,30 +65,27 @@ JOIN billing b ON a.appointment_id = b.appointment_id;
 
 
 
+
+
 ✅ Paid Billing Records
-sql
-Copy
-Edit
 SELECT * FROM billing WHERE status = "paid";
 
 
 
 
+
+
 💰 Total Billing and Paid Amount
-sql
-Copy
-Edit
 SELECT 
   (SELECT SUM(amount) FROM billing) AS total_billed,
   (SELECT SUM(amount) FROM billing WHERE status = 'paid') AS total_paid;
 
   
 
+
+
   
 🧑‍⚕️ Doctor Appointment Statistics by Specialty
-sql
-Copy
-Edit
 SELECT 
   d.specialty,
   COUNT(a.appointment_id) AS number_of_appointments
@@ -105,10 +96,9 @@ GROUP BY d.specialty;
 
 
 
+
+
 📊 Appointment Reasons Frequency
-sql
-Copy
-Edit
 SELECT reason, COUNT(*) AS count 
 FROM appointments 
 GROUP BY reason 
@@ -118,9 +108,6 @@ ORDER BY count DESC;
 
 
 📅 Latest Appointment per Patient
-sql
-Copy
-Edit
 SELECT 
   p.patient_id, 
   p.first_name, 
@@ -133,10 +120,10 @@ GROUP BY p.patient_id, p.first_name, p.last_name;
 
 
 
+
+
+
 👨‍⚕️ Doctor Appointment Count
-sql
-Copy
-Edit
 SELECT 
   d.doctor_id, 
   d.first_name, 
@@ -145,6 +132,8 @@ SELECT
 FROM doctors d
 LEFT JOIN appointments a ON d.doctor_id = a.doctor_id
 GROUP BY d.doctor_id, d.first_name, d.last_name;
+
+
 
 
 
@@ -167,6 +156,8 @@ ORDER BY dosage DESC;
 
 
 
+
+
 📌 Objective
 The purpose of this project is to:
 
@@ -181,12 +172,16 @@ Practice data handling using joins, grouping, aggregation, filtering, and subque
 
 
 
+
+
 🛠️ Technologies Used
 SQL
 
 MySQL / PostgreSQL (compatible syntax)
 
 DBMS tools like MySQL Workbench or pgAdmin
+
+
 
 
 
@@ -201,12 +196,16 @@ Run the queries in your preferred SQL editor
 
 
 
+
+
 📈 Future Scope
 Data visualization with Power BI / Tableau
 
 Integration with a frontend for appointment booking
 
 Advanced analytics (e.g., churn prediction or prescription trends)
+
+
 
 
 
